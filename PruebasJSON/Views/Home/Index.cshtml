@@ -1,0 +1,43 @@
+﻿@model dynamic
+@{
+	ViewData["Title"] = "Home Page";
+}
+<form asp-action="Submit" asp-controller="Home" method="post" enctype="application/x-www-form-urlencoded">
+	<div class="row page-titles">
+		<div class="col-md-5 align-self-center">
+			<h4 class="text-themecolor">@Model.Category.Entity.DisplayName</h4>
+			<br />
+		</div>
+	</div>
+	<div class="row">
+		@{
+			foreach (var component in Model.Category.Entity.Attributes)
+			{
+				<div class="col-4">
+					<label for="@component.ColumnName">@component.DisplayName</label>
+					@switch ((string)component.ComponentUI)
+					{
+						case "TextBox":
+							<input data-DataType="String" name="@component.ColumnName" id="@component.ColumnName" placeholder="@((bool) component.Required ? (@component.DisplayName)+"*" : (@component.DisplayName))" maxlength="@component.MaxLength" minlength="@component.MinLength" data-ColumnName="@component.ColumnName" required="@((bool) component.Required ? true : false)" data-val-required="Custom ErrorMessage" />
+							break;
+						case "DatetimePicker":
+							<input name="@component.ColumnName" id="@component.ColumnName" type="date" required="@((bool) component.Required ? true : false)"/>
+							break;
+						case "CheckBox":
+							<input name="@component.ColumnName" id="@component.ColumnName" type="checkbox"/>
+							break;
+						case "Dropdown":
+							<select name="@component.ColumnName" id="@component.ColumnName">
+								@foreach (var item in component.Allowed)
+								{
+									<option value="@item.ID">@item.Value</option>
+								}
+							</select>
+							break;
+					}
+				</div>
+			}
+		}
+		<button type="submit">Submit</button>
+	</div>
+</form>

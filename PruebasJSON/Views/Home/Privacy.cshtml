@@ -1,0 +1,13 @@
+﻿@model PruebasJSON.Helpers.User
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<form asp-action="Privacy" asp-controller="Home" method="post" enctype="multipart/form-data">
+	<div class="row">
+				<div class="col-4">
+					<label for="@Model.Name">@Model.Name</label>
+					<input name="Name" id="@Model.Name" type="text"/>
+				</div>
+		<button type="submit">Submit</button>
+	</div>
+</form>

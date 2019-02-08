@@ -1,0 +1,65 @@
+{
+  "Category": {
+    "Name": "Claim Processing",
+    "Entity": {
+      "Name": "CPT",
+      "DisplayName": "CPT/HCPCS",
+      "Attributes": [
+        {
+          "ColumnName": "Code",
+          "MaxLength": "3",
+          "MinLength": "1",
+          "DisplayName": "Code",
+          "DataType": "String",
+          "ComponentUI": "TextBox",
+          "Required": "true"
+        },
+        {
+          "ColumnName": "Description",
+          "DisplayName": "Description",
+          "MinLength": "2",
+          "DataType": "String",
+          "ComponentUI": "TextBox",
+          "Required": "false"
+        },
+        {
+          "ColumnName": "EffectiveDate",
+          "DisplayName": "Eff Date",
+          "DataType": "Date",
+          "ComponentUI": "DatetimePicker",
+          "Required": "true"
+        },
+        {
+          "ColumnName": "ExpDate",
+          "DisplayName": "Exp Date",
+          "DataType": "Date",
+          "ComponentUI": "DatetimePicker",
+          "Required": "true"
+        },
+        {
+          "ColumnName": "IsRequired",
+          "DisplayName": "Required",
+          "DataType": "bit",
+          "ComponentUI": "CheckBox"
+        },
+        {
+          "ColumnName": "IsValid",
+          "DisplayName": "Is Valid",
+          "DataType": "String",
+          "ComponentUI": "Dropdown",
+          "Required": "true",
+          "Allowed": [
+            {
+              "ID": "Y",
+              "Value": "Yes"
+            },
+            {
+              "ID": "N",
+              "Value": "No"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
