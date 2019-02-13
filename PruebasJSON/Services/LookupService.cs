@@ -32,23 +32,35 @@ namespace PruebasJSON.Services
 
             }
         }
-        public void GetLookupData()
+        public void GetLookupData<T>(T lookupTable) where T: class
         {
-            LookupTable lookupTable = new LookupTable()
-            {
-                Code = "AAA",
-                Description = "AAA"
-            };
-            
-            var mySet = _context.Set(lookupTable.GetType());
+            //TableA lookupTable = new TableA()
+            //{
+            //    Code = "AAA",
+            //    Description = "AAA"
+            //};
+
+            //string tableName = "Cat";
+            //var type = Assembly.GetExecutingAssembly()
+            //        .GetTypes()
+            //        .FirstOrDefault(t => t.Name == tableName);
+
+            //var mySet = _context.Set(lookupTable.GetType());
             _context.Add(lookupTable);
             _context.SaveChanges();
         }
+        public void Prueba(object test)
+        {
+            _context.Add(test);
+            _context.SaveChanges();
+        }
+
     }
 
     public interface ILookupTableService
     {
         dynamic GetDeserializedJson();
-        void GetLookupData();
+        void GetLookupData<T>(T lookupTable) where T : class;
+        void Prueba(object test);
     }
 }

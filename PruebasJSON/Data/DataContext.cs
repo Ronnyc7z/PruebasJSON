@@ -12,8 +12,8 @@ namespace PruebasJSON.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        public DbSet<LookupTable> LookupTable { get; set; }
-        public DbSet<LookupTable> LookupTable3 { get; set; }
+        public DbSet<TableA> TableA { get; set; }
+        public DbSet<TableB> TableB { get; set; }
 
     }
     public static class MyExtensions 
